@@ -6,21 +6,22 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class todayl2 extends StatefulWidget {
-  const todayl2({super.key});
+class apresDl3 extends StatefulWidget {
+  const apresDl3({super.key});
 
   @override
-  State<todayl2> createState() => _todayState();
+  State<apresDl3> createState() => _apresDl3State();
 }
 
-class _todayState extends State<todayl2> {
+class _apresDl3State extends State<apresDl3> {
   String x = DateFormat("EEEE").format(DateTime.now());
-  final CollectionReference _cour = FirebaseFirestore.instance.collection("lundil2");
-  final CollectionReference _mardi = FirebaseFirestore.instance.collection("mardil2");
-  final CollectionReference _mercredi = FirebaseFirestore.instance.collection("mercredil2");
-  final CollectionReference _jeudi = FirebaseFirestore.instance.collection("jeudil2");
-  final CollectionReference _vendredi = FirebaseFirestore.instance.collection("vendredil2");
-  final CollectionReference _samedi = FirebaseFirestore.instance.collection("samedil2");
+  final CollectionReference _lundi = FirebaseFirestore.instance.collection("lundi");
+  final CollectionReference _mardi = FirebaseFirestore.instance.collection("mardi");
+  final CollectionReference _mercredi = FirebaseFirestore.instance.collection("mercredi");
+  final CollectionReference _jeudi = FirebaseFirestore.instance.collection("jeudi");
+  final CollectionReference _vendredi = FirebaseFirestore.instance.collection("vendredi");
+  final CollectionReference _samedi = FirebaseFirestore.instance.collection("samedi");
+  final CollectionReference _dimanche = FirebaseFirestore.instance.collection("dimanche");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +51,7 @@ class _todayState extends State<todayl2> {
       body: SingleChildScrollView(
         child: Container(
           height: 7000,
-          color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],
+          color: Get.isDarkMode?Colors.black:Colors.grey[300],
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -63,7 +64,7 @@ class _todayState extends State<todayl2> {
                       Padding(
                         padding: const EdgeInsets.only(left:15.0),
                         child: Container(
-                            width: 150,
+                            width: 155,
                             padding: EdgeInsets.only(right: 4,left: 12),
                             decoration: BoxDecoration(
                                 color: Get.isDarkMode?Colors.yellowAccent:Colors.deepPurpleAccent,
@@ -73,14 +74,14 @@ class _todayState extends State<todayl2> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(x=="Monday"?"Lundi":x=="Tuesday"?"Mardi":x=="Wednesday"?"Mercredi":x=="Thursday"?"Jeudi":x=="Friday"?"Vendredi":x=="Saturday"?"Samedi":"Samedi",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis,color:Get.isDarkMode?Colors.black:Colors.white,),)),
+                                Text(x=="Monday"?"Mardi":x=="Tuesday"?"Mercredi":x=="Wednesday"?"Jeudi":x=="Thursday"?"Vendredi":x=="Friday"?"Samedi":x=="Saturday"?"Dimanche":x=="Sunday"?"Lundi":"Vide",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis,color:Get.isDarkMode?Colors.black:Colors.white,),)),
                                 IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
                               ],)
                         ),
                       ),
                       SizedBox(height: 10,),
                       Container(
-                        child: StreamBuilder(stream: (x=="Monday"?_cour:x=="Tuesday"?_mardi:x=="Wednesday"?_mercredi:x=="Thursday"?_jeudi:x=="Friday"?_vendredi:x=="Saturday"?_samedi:_samedi).orderBy("time",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
+                        child: StreamBuilder(stream: (x=="Monday"?_mardi:x=="Tuesday"?_mercredi:x=="Wednesday"?_jeudi:x=="Thursday"?_vendredi:x=="Friday"?_samedi:x=="Saturday"?_dimanche:x=="Sunday"?_lundi:_lundi).orderBy("time",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
                           if(streamsnapshot.hasData){
                             return ListView.builder(
                                 shrinkWrap: true,

@@ -174,7 +174,7 @@ class _stryState extends State<stry> with TickerProviderStateMixin{
                                         gradient: Palette.storyGradient
                                     ),
                                   ),
-                                  Positioned(bottom: 48,left: 30,right: 10,child:InkWell(
+                                  Positioned(top: 10,left: 10,child:InkWell(
                                     onTap: (){
                                       Get.to(()=>
                                           null);
@@ -186,6 +186,8 @@ class _stryState extends State<stry> with TickerProviderStateMixin{
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
+                                            height: 40,
+                                              width: 40,
                                               padding: EdgeInsets.all(0),
                                               decoration: BoxDecoration(
                                                   color: Colors.grey[300]!.withAlpha(2000),
@@ -201,7 +203,7 @@ class _stryState extends State<stry> with TickerProviderStateMixin{
                                       ),
                                     ),
                                   ) ,),
-                                  Positioned(bottom: 8,right: 8,left: 8,child: Text("Ajouter un statut",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,),maxLines: 2,overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,),)
+                                  Positioned(bottom: 8,right: 8,left: 8,child: Text("Ajouter à story",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,),maxLines: 2,overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,),)
                                 ],);
                               }
                               else if(picd.isNotEmpty){

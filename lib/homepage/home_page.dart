@@ -88,7 +88,7 @@ class _HomePgeState extends State<HomePge> {
               children: [
                 HeaderSection(),
     Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
-    stry(),
+    const stry(),
                 Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
     CatagorySection(),
     ],

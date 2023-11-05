@@ -29,7 +29,6 @@ class _mbuttonState extends State<mbutton> {
     "Ne répéte pas",
     "Chaque jour",
     "Chaque semaine",
-    "Chaque mois"
   ];
   int _selectedcolor =0;
   final TaskController _taskController = Get.put(TaskController());
@@ -253,10 +252,7 @@ class _mbuttonState extends State<mbutton> {
     initialEntryMode: TimePickerEntryMode.input,
     context : context,
     initialTime : TimeOfDay( hour: int.parse(_Debut.split(":")[0]),
-      minute: int.parse(_Debut.split(":")[1].split(" ")[0]),),
-    builder: (context , child){
-      return MediaQuery(data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true), child: child ?? Container());
-    }
+      minute: int.parse(_Debut.split(":")[1].split(" ")[0]),)
   );
     }
     _colorpalette(){

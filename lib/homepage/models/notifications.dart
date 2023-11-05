@@ -1,12 +1,26 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_timezone/flutter_timezone.dart';
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import '../../base/task.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
+Future<void> handleBackgroundMessage(RemoteMessage message)async{
+  print("Title:${message.notification?.title}");
+  print("Body:${message.notification?.body}");
+  print("Payload:${message.data}");
+}
 class NotifyHelper{
+  final _firebaseMessaging = FirebaseMessaging.instance;
+  Future<void> initNotifications()async{
+    await _firebaseMessaging.requestPermission();
+    final fCMToken = _firebaseMessaging.getToken();
+    String? ms = await fCMToken;
+    print('Token: $ms');
+    FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
+  }
   void requestIOSPermissions() {
     flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
@@ -62,21 +76,19 @@ class NotifyHelper{
       payload: 'It could be anything you pass',
     );
   }
-  det(){
-    return NotificationDetails(
-        android: AndroidNotificationDetails( "channelId",
-          "channelName",
-        ),
-        iOS: DarwinNotificationDetails()
-    );
-  }
+
   Future shedulNot(int hour, int minutes,Task task) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       task.id!.toInt(),
       task.salle,
       task.title,
     _convertTime(hour,minutes),
-      await det(),
+      NotificationDetails(
+          android: AndroidNotificationDetails( "channelId",
+            "channelName",
+          ),
+          iOS: DarwinNotificationDetails()
+      ),
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
     matchDateTimeComponents: DateTimeComponents.time,
       payload: "{$task.title}"+"{$task.salle}|",
@@ -106,7 +118,7 @@ class NotifyHelper{
   }
   Future<void> _configureLocalTimeZone()async{
     tz.initializeTimeZones();
-    final String timeZone = await FlutterTimezone.getLocalTimezone();
+    final String timeZone = await FlutterNativeTimezone.getLocalTimezone();
     tz.setLocalLocation(tz.getLocation(timeZone));
   }
   Details(){

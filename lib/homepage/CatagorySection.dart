@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:new_app/barpages/apresdl2.dart';
+import 'package:new_app/barpages/apresdl3.dart';
 import 'package:new_app/barpages/aujourdhui.dart';
 import 'package:new_app/homepage/ctg/lone.dart';
 import 'package:new_app/homepage/links.dart';
@@ -34,7 +37,7 @@ class _CatagorySectionState extends State<CatagorySection> {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      height: 700,
+      height: 1000,
       decoration:  BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20) ,
@@ -154,91 +157,150 @@ class _CatagorySectionState extends State<CatagorySection> {
                 )
             ),
             Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 15,top: 10,bottom: 10),
-                  child: GestureDetector(
-                    onTap: (){
-                      Get.to(()=>const pagelinks());
-                    },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        width: 120,
-                          height: 120,
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                            Colors.deepPurpleAccent,
-                            Colors.blueAccent,
-                                Colors.lightBlueAccent
-                          ]),
-                        ),
-                        child: Center(child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                             Image.asset("assets/images/fst.png",scale: 8,),
-                            SizedBox(height: 2,),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0,right: 8.0),
-                              child: Text("Faculte des sciences et des techniques",style: TextStyle(
-                                fontSize: 10,
+            Row(children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15,top: 10,bottom: 10),
+                child: GestureDetector(
+                  onTap: (){
+                    typel=="L2"?Get.to(()=>todayl2()):typel=="L3"?Get.to(()=>today()):null;
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      width: 60,
+                      height: 90,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Colors.blue,
+                              Colors.blue,
+                              Colors.blue
+                            ]),
+                      ),
+                      child: Center(child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Icon(Icons.calendar_month,color: Colors.white,size: 30,),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0,right: 8.0,top: 5),
+                            child: Text("Aujourd'hui",style: TextStyle(
+                                fontSize: 8,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold
-                              ),textAlign: TextAlign.center,),
-                            )
-                          ],
-                        ),),
-                      ),
+                            ),textAlign: TextAlign.center,),
+                          )
+                        ],
+                      ),),
                     ),
                   ),
                 ),
-                SizedBox(width: 5,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15,top: 10,bottom: 10),
-                  child: GestureDetector(
-                    onTap: (){
-                      typel=="L2"?Get.to(()=>todayl2()):typel=="L3"?Get.to(()=>today()):null;
-                    },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        width: 120,
-                        height: 120,
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                Colors.blue,
-                                Colors.indigoAccent,
-                                Colors.indigo
-                              ]),
-                        ),
-                        child: Center(child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.calendar_month,color: Colors.white,size: 30,),
-                            SizedBox(height: 2,),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0,right: 8.0,top: 5),
-                              child: Text("Aujourd'hui",style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold
-                              ),textAlign: TextAlign.center,),
-                            )
-                          ],
-                        ),),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15,top: 10,bottom: 10),
+                child: GestureDetector(
+                  onTap: (){
+                    typel=="L2"?Get.to(()=>const apresDl2()):typel=="L3"?Get.to(()=>const apresDl3()):null;
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      width: 60,
+                      height: 90,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Colors.blue,
+                              Colors.blue,
+                              Colors.blue
+                            ]),
                       ),
+                      child: Center(child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Icon(Icons.calendar_month,color: Colors.white,size: 30,),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0,right: 8.0,top: 5),
+                            child: Text("Demain",style: TextStyle(
+                                fontSize: 8,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold
+                            ),textAlign: TextAlign.center,),
+                          )
+                        ],
+                      ),),
                     ),
                   ),
                 ),
+              ),
+            ],),
+            Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
+           Padding(padding: EdgeInsets.only(left: 15),
+             child:Text("Présentation",style: GoogleFonts.lato(
+               textStyle: TextStyle(
+                 fontWeight: FontWeight.bold,
+                 fontSize: 24
+               )
+             ),) ,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15,top: 10,bottom: 10),
+                    child: GestureDetector(
+                      onTap: (){
+                        Get.to(()=>const pagelinks());
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(0),
+                        child: Container(
+                          width: 120,
+                            height: 120,
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                              Colors.white,
+                              Colors.white,
+                                  Colors.white
+                            ]),
+                            border:  Border.fromBorderSide(BorderSide(color: Colors.black,width: 1))
 
-              ],
+                          ),
+                          child: Center(child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                               Image.asset("assets/images/fst.png",scale: 8,),
+                              SizedBox(height: 2,),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+                                child: Text("Faculte des sciences et des techniques",style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold
+                                ),textAlign: TextAlign.center,),
+                              )
+                            ],
+                          ),),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
             Container(

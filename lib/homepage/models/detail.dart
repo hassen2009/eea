@@ -92,9 +92,9 @@ class detaille extends StatelessWidget {
                                   begin: Alignment.topRight,
                                   end: Alignment.bottomLeft,
                                   colors: [
-                                    Colors.greenAccent.withOpacity(0.6),
+                                    Colors.blue.withOpacity(0.9),
                                     Colors.blueAccent,
-                                    Colors.deepPurpleAccent,
+                                    Colors.blue,
                                   ])
                           ),
                           child: Column(
@@ -105,7 +105,7 @@ class detaille extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Icon(Icons.lightbulb_rounded,size: 40,color: Colors.greenAccent.withOpacity(0.8),),
+                                    Icon(Icons.lightbulb_rounded,size: 40,color: Colors.blue[200],),
                                     SizedBox(width: 8,),
                                     Text("CONDITIONS D'ADMISSION",style: GoogleFonts.lato(
                                         textStyle: TextStyle(
@@ -146,9 +146,9 @@ class detaille extends StatelessWidget {
                                   begin: Alignment.topRight,
                                   end: Alignment.bottomLeft,
                                   colors: [
-                                    Colors.greenAccent.withOpacity(0.6),
-                                    Colors.blue.withOpacity(0.8),
-                                    Colors.blueAccent,
+                                    Colors.yellow,
+                                    Colors.orangeAccent,
+                                    Colors.orange,
                                   ])
                           ),
                           child: Column(
@@ -159,7 +159,7 @@ class detaille extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Icon(Icons.lightbulb_rounded,size: 40,color: Colors.greenAccent.withOpacity(0.8),),
+                                    Icon(Icons.lightbulb_rounded,size: 40,color: Colors.yellow,),
                                     SizedBox(width: 8,),
                                     Text("DEBOUCHES",style: GoogleFonts.lato(
                                         textStyle: TextStyle(

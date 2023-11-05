@@ -35,7 +35,7 @@ class _emploiState extends State<emploi> {
     // TODO: implement initState
     super.initState();
     _checktypel();
-
+    NotifyHelper().initializeNotification();
   }
   String typel = "L2";
   _checktypel()async{
@@ -49,7 +49,7 @@ class _emploiState extends State<emploi> {
   Widget build(BuildContext context) {
     print("build method called");
     return  Padding(
-      padding: const EdgeInsets.only(top: 98.0),
+      padding: const EdgeInsets.only(top: 94.0),
       child: SingleChildScrollView(
         child: Stack(
           children: [

@@ -1,7 +1,9 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:new_app/Db/dbhelper.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -21,10 +23,10 @@ const kWebRecaptchaSiteKey = '6Lemcn0dAAAAABLkf6aiiHvpGD6x-zF3nOSDU2M8';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  NotifyHelper().initializeNotification();
   await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform
   );
+
   await FirebaseAppCheck.instance.activate(
     webProvider: ReCaptchaV3Provider(kWebRecaptchaSiteKey),
     // Default provider for Android is the Play Integrity provider. You can use the "AndroidProvider" enum to choose
@@ -43,6 +45,7 @@ Future<void> main() async {
   );
   await DBHelper.initDb();
   await GetStorage.init();
+  await NotifyHelper().initNotifications();
   runApp(const MyApp());
   initializeDateFormatting('fr_FR', null).then((_) => runApp(const MyApp()));
 }
@@ -76,9 +79,13 @@ class _MyAppState extends State<MyApp> {
         theme: Hmode.lightTheme,
         darkTheme: Hmode.darkTheme,
         themeMode: themeservices().theme,
-        home: const Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: welcomescreen(),
+        home: AnimatedSplashScreen(
+          duration: 3000,
+          splashTransition: SplashTransition.fadeTransition,
+          backgroundColor: Colors.white,
+          splash:
+        Image.asset("assets/images/splashlogo.png",scale: 1,),
+         nextScreen: welcomescreen(),
         ),
       ),
     );
